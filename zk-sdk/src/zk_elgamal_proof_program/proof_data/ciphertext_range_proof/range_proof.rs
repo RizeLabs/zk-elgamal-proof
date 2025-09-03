@@ -59,7 +59,7 @@ impl BatchedRangeProofU256Data {
         amounts: Vec<u64>,
         bit_lengths: Vec<usize>,
         openings: Vec<&PedersenOpening>,
-        ciphertext: &[u8;32]
+        ciphertext: &Vec<u8>
        
         
     ) -> Result<Self, ProofGenerationError> {
@@ -168,9 +168,9 @@ mod test {
         let (commitment_8, opening_8) = Pedersen::new(amount_8);
 
         // // Create dummy ciphertext data for testing
-        let ciphertext = [1u8; 32]; // 64 bytes of dummy ciphertext data
+        let ciphertext: Vec<u8> = vec![1u8; 32]; 
         let mut hasher = Sha3_256::new();
-        hasher.update(ciphertext);
+        hasher.update(&ciphertext);
         let ciphertext_hash: [u8; 32] = hasher.finalize().into();
 
 

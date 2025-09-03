@@ -52,7 +52,7 @@ const MAX_COMMITMENTS: usize = 8;
 /// This struct holds the public information that a batched range proof certifies. It includes the
 /// Pedersen commitments and their corresponding bit lengths. This context is shared by all
 /// `VerifyBatchedRangeProof{N}` instructions.
-#[derive(Clone, Copy, bytemuck_derive::Pod, bytemuck_derive::Zeroable)]
+#[derive(Clone, Copy,bytemuck_derive::Pod, bytemuck_derive::Zeroable)]
 #[repr(C)]
 pub struct CiphertextRangeProofContext {
     pub commitments: [PodPedersenCommitment; MAX_COMMITMENTS],
@@ -77,7 +77,7 @@ impl CiphertextRangeProofContext {
         amounts: &[u64],
         bit_lengths: &[usize],
         openings: &[&PedersenOpening],
-        ciphertext: &[u8;32]
+        ciphertext: &Vec<u8>
     ) -> Result<Self, ProofGenerationError> {
         // the number of commitments is capped at 8
         let num_commitments = commitments.len();
