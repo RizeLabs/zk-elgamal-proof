@@ -22,6 +22,7 @@ solana-instruction = { workspace = true, features = ["std"] }
 solana-pubkey = { workspace = true, features = ["bytemuck"] }
 solana-sdk-ids = { workspace = true }
 thiserror = { workspace = true }
+sha3 = { workspace = true }
 
 [target.'cfg(not(target_os = "solana"))'.dependencies]
 aes-gcm-siv = { workspace = true }
